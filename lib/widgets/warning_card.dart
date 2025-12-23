@@ -3,10 +3,12 @@ import 'package:kestirimci_bakim/models/warning.dart';
 
 class WarningCard extends StatelessWidget {
   final Warning warning;
+  final String machineName;
   final VoidCallback? onTap;
 
   const WarningCard({
     super.key,
+    required this.machineName,
     required this.warning,
     this.onTap,
   });
@@ -29,6 +31,15 @@ class WarningCard extends StatelessWidget {
                   color: Colors.red,
                 ),
               ),
+                Text(
+                "Makine: $machineName",
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Colors.grey,
+                ),
+              ),
+
+              const SizedBox(height: 6),
               const SizedBox(height: 4),
               Text(warning.description),
             ],

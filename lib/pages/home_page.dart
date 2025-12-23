@@ -148,12 +148,16 @@ SliverList(
   delegate: SliverChildBuilderDelegate(
     (context, index) {
       final warning = warnings[index];
+      final machine = getMachineById(warning.machineId);
+
+      if (machine == null) {
+        return const SizedBox.shrink();
+      }
 
       return WarningCard(
         warning: warning,
+        machineName: machine.name,
         onTap: () {
-          final machine = getMachineById(warning.machineId);
-
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -166,6 +170,7 @@ SliverList(
     childCount: warnings.length,
   ),
 ),
+
 //uyarılar başlığı altına uyarı kartlarını koydum
           
         ],

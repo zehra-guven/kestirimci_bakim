@@ -33,6 +33,10 @@ final List<Machine> machines = [
     data2: "Motor Akımı: 11.4 A",
   ),
 ];
-Machine getMachineById(String id) {
-  return machines.firstWhere((m) => m.id== id);
+Machine? getMachineById(String id) {
+  try {
+    return machines.firstWhere((m) => m.id == id);
+  } catch (e) {
+    return null;
+  }
 }
