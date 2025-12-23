@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
-
-// Sayfa importları
 import 'package:kestirimci_bakim/pages/home_page.dart';
 import 'package:kestirimci_bakim/pages/machines_page.dart';
 import 'package:kestirimci_bakim/pages/profile_page.dart';

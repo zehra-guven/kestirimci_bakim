@@ -6,7 +6,7 @@ class Machine {
   final int speed;       // RPM
   final String data1;    
   final String data2;    
-
+  final String id;
   Machine({
     required this.name,
     required this.status,
@@ -15,5 +15,6 @@ class Machine {
     required this.speed,
     required this.data1,
     required this.data2,
+    required this.id,
   });
 }

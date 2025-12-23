@@ -2,6 +2,7 @@ import 'package:kestirimci_bakim/models/machine.dart';
 
 final List<Machine> machines = [
   Machine(
+    id: "m1",
     name: "CNC Torna 01",
     status: "Normal",
     health: 92,
@@ -9,8 +10,10 @@ final List<Machine> machines = [
     speed: 1200,
     data1: "Titreşim: 2.3 mm/s",
     data2: "Spindle Yükü: %57",
+   
   ),
   Machine(
+    id: "m2",
     name: "Frez Makinesi 02",
     status: "Kritik",
     health: 48,
@@ -20,6 +23,7 @@ final List<Machine> machines = [
     data2: "Spindle Yükü: %82",
   ),
   Machine(
+    id: "m2",
     name: "Kesim Robotu 03",
     status: "Normal",
     health: 75,
@@ -29,3 +33,6 @@ final List<Machine> machines = [
     data2: "Motor Akımı: 11.4 A",
   ),
 ];
+Machine getMachineById(String id) {
+  return machines.firstWhere((m) => m.id== id);
+}

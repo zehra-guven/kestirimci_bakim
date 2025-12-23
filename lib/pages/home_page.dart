@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kestirimci_bakim/layout/main_layout.dart';
+import 'package:kestirimci_bakim/pages/machine_detail_page.dart';
 import 'package:kestirimci_bakim/shapes/oval_bottom_clipper.dart';
 import 'package:kestirimci_bakim/widgets/machine_card.dart';
 import 'package:kestirimci_bakim/widgets/warning_card.dart';
@@ -99,14 +100,27 @@ class HomePage extends StatelessWidget {
           // -----------------------------------------------------------
           // MAKİNE KARTLARI (MAX 2)
           // -----------------------------------------------------------
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                return MachineCard(machine: machines[index]);
-              },
-              childCount: machines.length ,
+      SliverList(
+  delegate: SliverChildBuilderDelegate(
+    (context, index) {
+      final machine = machines[index];
+
+      return InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => MachineDetailPage(machine: machine),
             ),
-          ),
+          );
+        },
+        child: MachineCard(machine: machine),
+      );
+    },
+    childCount: machines.length,
+  ),
+),
+
 
           // ==============================
           // 📌 UYARILAR
@@ -129,18 +143,31 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-          ),
+          ),//uyarılar başlığı ekledim
+SliverList(
+  delegate: SliverChildBuilderDelegate(
+    (context, index) {
+      final warning = warnings[index];
 
-          // UYARILAR MAX 2 KART
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                return WarningCard(warning: warnings[index]);
-              },
-              childCount: warnings.length 
+      return WarningCard(
+        warning: warning,
+        onTap: () {
+          final machine = getMachineById(warning.machineId);
+
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => MachineDetailPage(machine: machine),
             ),
-          ),
-
+          );
+        },
+      );
+    },
+    childCount: warnings.length,
+  ),
+),
+//uyarılar başlığı altına uyarı kartlarını koydum
+          
         ],
       ),
     );
